@@ -1,0 +1,68 @@
+def calculate_tourism_fee(nights):
+    """Calculate Bhutan's sustainable tourism fee"""
+    daily_fee = 100  # USD per night
+    return nights * daily_fee
+
+def bhutan_greeting(name, city="Thimphu"):
+    """Greet tourists with default location"""
+    return f"Kuzuzangpo la {name}! Welcome to {city}!"
+
+def list_attractions(*attractions):
+    """List multiple tourist attractions"""
+    print("Must-visit places in Bhutan:")
+    for i, attraction in enumerate(attractions, 1):
+        print(f"{i}. {attraction}")
+
+def create_tour_itinerary(**activities):
+    """Create tour itinerary with flexible activities"""
+    print("\nYour Bhutan Tour Itinerary:")
+    for day, activity in activities.items():
+        print(f"{day}: {activity}")
+
+def calculate_gnh_scores():
+    """Return multiple GNH indicators"""
+    education = 75.4
+    health = 82.1
+    environment = 88.7
+    return education, health, environment
+
+calculate_tax = lambda amount: amount * 0.10  # 10% tax
+
+print("=== 1. Basic Function ===")
+fee = calculate_tourism_fee(7)
+print(f"Tourism fee for 7 nights: ${fee}")
+
+print("\n=== 2. Default Parameter ===")
+print(bhutan_greeting("Karma"))
+print(bhutan_greeting("Sarah", "Paro"))
+
+print("\n=== 3. *Args Function ===")
+list_attractions("Tiger's Nest", "Punakha Dzong", "Buddha Dordenma", "Dochula Pass")
+
+print("\n=== 4. **Kwargs Function ===")
+create_tour_itinerary(Day1="Arrival in Paro, visit Tiger's Nest",Day2="Travel to Thimphu, visit Tashichho Dzong",Day3="Experience traditional archery",
+Day4="Hike to Dochula Pass")
+
+print("\n=== 5. Multiple Return Values ===")
+edu, health, env = calculate_gnh_scores()
+print(f"GNH Scores - Education: {edu}%, Health: {health}%, Environment: {env}%")
+
+print("\n=== 6. Lambda Function ===")
+purchase_amount = 500
+tax = calculate_tax(purchase_amount)
+print(f"Tax on ${purchase_amount}: ${tax}")
+
+print("\n=== 7. Combined Example ===")
+def plan_bhutan_trip(tourist_name, *cities, **preferences):
+    """Combine all function concepts"""
+    print(f"\nTrip Plan for {tourist_name}:")
+    print(f"Cities to visit: {', '.join(cities)}")
+    if preferences:
+        print("Special Preferences:")
+        for key, value in preferences.items():
+            print(f"  - {key}: {value}")
+
+plan_bhutan_trip("Dechen", "Paro", "Thimphu", "Punakha", 
+                 accommodation="Traditional homestay", 
+                 activity="Trekking", 
+                 food="Ema Datshi")
